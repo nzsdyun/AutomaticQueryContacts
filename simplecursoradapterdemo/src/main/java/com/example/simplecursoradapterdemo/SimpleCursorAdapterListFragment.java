@@ -25,7 +25,7 @@ import android.widget.FilterQueryProvider;
 import android.widget.ListView;
 
 /**
- * Created by chenkun on 8/23/2016.
+ * Created by sky on 8/23/2016.
  */
 public class SimpleCursorAdapterListFragment extends Fragment implements
         AdapterView.OnItemClickListener, SearchView.OnQueryTextListener, LoaderManager.LoaderCallbacks<Cursor> {
@@ -219,7 +219,6 @@ public class SimpleCursorAdapterListFragment extends Fragment implements
                     uri = Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_FILTER_URI
                             , Uri.encode(constraint.toString()));
                 }
-                //TODO:this should not be run in the UI thread
                 Cursor cursor = mContext.getContentResolver().query(uri, PROJECTION, null, null, null);
                 if (cursor != null) {
                     filterResults.values = cursor;
@@ -258,7 +257,6 @@ public class SimpleCursorAdapterListFragment extends Fragment implements
                 uri = Uri.withAppendedPath(ContactsContract.Contacts.CONTENT_FILTER_URI
                         , Uri.encode(constraint.toString()));
             }
-            //TODO:this should not be run in the UI thread
             return mContext.getContentResolver().query(uri, PROJECTION, null, null, null);
         }
     }
